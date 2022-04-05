@@ -2,7 +2,7 @@ import os
 from os import path
 
 from flask import Flask
-#from flask_cors import CORS
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
 #from flask_login import LoginManager
@@ -19,7 +19,7 @@ DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__, static_folder='./first-react-flask-app/build', static_url_path='')
-    #CORS(app)
+    CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
