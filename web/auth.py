@@ -13,7 +13,7 @@ from .models import db
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route('https://notell.herokuapp.com/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         data = request.get_json()
