@@ -13,7 +13,7 @@ from .models import db
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route('/api/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         data = request.get_json()
@@ -33,13 +33,13 @@ def login():
         return 'Done', 201
 
 
-@auth.route('/logout')
+@auth.route('/api/logout')
 def logout():
     # logout_user()
     return "<p>This is the logout page</p>"
 
 
-@auth.route('/sign-up', methods=['GET', 'POST'])
+@auth.route('/api/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
         # get json data from post request

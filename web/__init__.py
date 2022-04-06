@@ -18,7 +18,7 @@ DB_NAME = "database.db"
 
 
 def create_app():
-    app = Flask(__name__, static_folder='./first-react-flask-app/build', static_url_path='')
+    app = Flask(__name__, static_folder='./first-react-flask-app/build', static_url_path='/')
     CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)

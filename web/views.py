@@ -16,7 +16,7 @@ views = Blueprint('views', __name__)
 
 
 
-@views.route('/addnote', methods=['GET', 'POST'])
+@views.route('/api/addnote', methods=['GET', 'POST'])
 @jwt_required()
 def add_note():
     current_user = get_jwt_identity()
@@ -36,7 +36,7 @@ def add_note():
         return 'Done', 201
 
 
-@views.route('/notesfeed', methods=['GET', 'POST'])
+@views.route('/api/notesfeed', methods=['GET', 'POST'])
 #@jwt_required()
 def all_notes():
     if request.method == "GET":
@@ -44,7 +44,7 @@ def all_notes():
         return jsonify(notes)
 
 
-@views.route('/mynotes', methods=['GET', 'POST'])
+@views.route('/api/mynotes', methods=['GET', 'POST'])
 @jwt_required()
 def personal_notes():
     current_user = get_jwt_identity()
@@ -53,7 +53,7 @@ def personal_notes():
         return jsonify(notes)
 
 
-@views.route('/delete-note', methods=['POST'])
+@views.route('/api/delete-note', methods=['POST'])
 @jwt_required()
 def delete_note():
     current_user = get_jwt_identity()
