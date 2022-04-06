@@ -30,7 +30,8 @@ def login():
                 print('Incorrect password')
         else:
             print('User does not exist')
-        return 'Done', 201
+            print(user.password)
+            return 'Done', 201
 
 
 @auth.route('/api/logout')
