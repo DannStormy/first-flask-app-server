@@ -24,6 +24,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 access_token = create_access_token(identity=username)
+                print(user)
                 print('Logged in Successfully')
                 return jsonify(access_token=access_token, username=username)
             else:
