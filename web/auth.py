@@ -30,7 +30,7 @@ def login():
                 print('Incorrect password')
         else:
             print('User does not exist')
-            print(user.password)
+            print(user)
             return 'Done', 201
 
 
