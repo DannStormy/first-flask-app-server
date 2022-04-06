@@ -22,7 +22,7 @@ def create_app():
     CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'HEROKU_POSTGRESQL_ORANGE_URL'#f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.init_app(app)
 
