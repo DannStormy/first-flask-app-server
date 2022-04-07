@@ -54,6 +54,7 @@ def sign_up():
         password = data['password']
         user = User.query.filter_by(email=email).first()
         oldUser = User.query.filter_by(username=username).first()
+        print(data)
         if user:
             print('Email exists, please login if you already have an account')
             return "Email exists", 500
@@ -62,6 +63,7 @@ def sign_up():
             return "Username exists", 500
         # store new_user with data
         else:
+            print("I got here")
             print(username)
             new_user = User(email=email, firstName=firstName,
                             lastName=lastName, username=username,
