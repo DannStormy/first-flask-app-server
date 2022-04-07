@@ -33,6 +33,7 @@ def login():
             print('User does not exist')
             print(user)
             return 'User does not exist', 201
+    return "<p>This is the login page</p>"
 
 
 @auth.route('/api/logout')
@@ -73,3 +74,4 @@ def sign_up():
             db.session.commit()
             print("New User")
             return {"Signed-up": True}
+    return "<p>This is the sign-up page</p>"
