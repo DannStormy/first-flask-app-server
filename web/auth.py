@@ -32,7 +32,7 @@ def login():
         else:
             print('User does not exist')
             print(user)
-            return 'Done', 201
+            return 'User does not exist', 201
 
 
 @auth.route('/api/logout')
@@ -72,4 +72,4 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             print("New User")
-    return {"Signed-up": True}
+            return {"Signed-up": True}
