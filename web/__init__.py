@@ -1,5 +1,4 @@
 import os
-import re
 from os import path
 
 from flask import Flask
@@ -23,10 +22,8 @@ def create_app():
     CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
-    uri = 'postgres://ixzcztnyllnnbl:e9cbb9e2b80a90bb1cb13370dd183a4ff17bac28fc66a0ced22e042e0fe88fc3@ec2-34-197-84-74.compute-1.amazonaws.com:5432/dbaqbn4bumsdbl'
+    uri = 'postgresql://ixzcztnyllnnbl:e9cbb9e2b80a90bb1cb13370dd183a4ff17bac28fc66a0ced22e042e0fe88fc3@ec2-34-197-84-74.compute-1.amazonaws.com:5432/dbaqbn4bumsdbl'
     #f'sqlite:///{DB_NAME}'
-    if uri and uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
     app.config['SQLALCHEMY_DATABASE_URI'] = uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
