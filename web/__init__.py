@@ -22,7 +22,7 @@ def create_app():
     CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://nitpxcpibpzvaf:05b8448c48217213cfd737eb39680aa026482b04d545d1ad5af25495bc2b35e1@ec2-52-73-155-171.compute-1.amazonaws.com:5432/db5e2o0u0asnj8'#f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mcxdtmlyawwruz:cae33a97a8b9318e0d47869d43997abad73e527fb9e6fd2a9c9e9980acc195c4@ec2-52-73-155-171.compute-1.amazonaws.com:5432/d609nk86b17jko'#f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
