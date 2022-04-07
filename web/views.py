@@ -40,7 +40,7 @@ def add_note():
 #@jwt_required()
 def all_notes():
     if request.method == "GET":
-        notes = Note.query.all()
+        notes = Note.query.order_by(Note.date)
         return jsonify(notes)
 
 
