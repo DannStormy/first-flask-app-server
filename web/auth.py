@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, flash
 from flask_login import current_user
 from flask_jwt_extended import create_access_token
-#from flask_cors import CORS, cross
+from flask_cors import CORS, cross_origin
 
 #from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import true
@@ -43,6 +43,7 @@ def logout():
 
 
 @auth.route('/api/sign-up', methods=['GET', 'POST'])
+@cross_origin()
 def sign_up():
     if request.method == 'POST':
         # get json data from post request
