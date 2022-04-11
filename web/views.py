@@ -43,6 +43,7 @@ def all_notes():
         #notes = Note.query.order_by(Note.date)
         notes = Note.query.all()
         # print(Note.query.all())
+        print(Note.query.all.order_by(Note.date))
         print(notes)
         return jsonify(notes)
 
