@@ -1,6 +1,4 @@
-from audioop import cross
-from calendar import c
-import json
+from sqlalchemy import desc
 
 from flask import Blueprint, send_from_directory
 #from flask_cors import CORS, cross_origin
@@ -43,7 +41,7 @@ def all_notes():
         #notes = Note.query.order_by(Note.date)
         notes = Note.query.all()
         # print(Note.query.all())
-        print(Note.query.all.order_by(Note.date))
+        print(Note.order_by(desc(Note.date)))
         print(notes)
         return jsonify(notes)
 
