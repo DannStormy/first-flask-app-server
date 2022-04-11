@@ -21,9 +21,9 @@ views = Blueprint('views', __name__)
 @jwt_required()
 def add_note():
     current_user = get_jwt_identity()
-    print("Current user is " + current_user)
+    #print("Current user is " + current_user)
     user = User.query.filter_by(username=current_user).first()
-    print(user.id)
+    #print(user.id)
     if request.method == "POST":
         data = request.get_json()
         note = data['note']
@@ -32,7 +32,7 @@ def add_note():
             return jsonify(error="note too short")
         else:
             new_note = Note(
-                data=note, can_view_records=can_view_records, owner=current_user)
+                data=note, can_view_records=can_view_records, user_id=user.id, owner=current_user)
             db.session.add(new_note)
             db.session.commit()
             print("Note added!")
