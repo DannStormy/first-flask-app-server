@@ -25,6 +25,7 @@ def create_app():
     jwt = JWTManager(app)
     #f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    print(os.getenv('DATABASE_URL'))
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     app.register_blueprint(views, url_prefix='/')
