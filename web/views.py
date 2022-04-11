@@ -52,7 +52,7 @@ def all_notes():
 def personal_notes():
     current_user = get_jwt_identity()
     if request.method == "GET":
-        notes = Note.query.filter_by(user_id=current_user).all()
+        notes = Note.query.filter_by(owner=current_user).all()
         return jsonify(notes)
 
 
