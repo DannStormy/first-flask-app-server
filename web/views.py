@@ -44,6 +44,8 @@ def add_note():
 def all_notes():
     if request.method == "GET":
         notes = Note.query.order_by(Note.date)
+        print(Note.query.all())
+        print(notes)
         return jsonify(notes)
 
 
