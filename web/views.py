@@ -23,7 +23,7 @@ def add_note():
     current_user = get_jwt_identity()
     print("Current user is " + current_user)
     current_user_id = User.query.filter_by(username=current_user)
-    print("Current user_id is " + current_user_id)
+    print(jsonify(current_user_id))
     if request.method == "POST":
         data = request.get_json()
         note = data['note']
