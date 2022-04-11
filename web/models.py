@@ -1,6 +1,7 @@
 import string
 from xmlrpc.client import Boolean, boolean
 from flask_login import UserMixin
+from sqlalchemy import Integer
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
@@ -13,7 +14,7 @@ class Note(db.Model):
     id: int
     data: string
     can_view_records: bool
-    user_id: string
+    user_id: int
 
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
