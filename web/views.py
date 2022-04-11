@@ -1,4 +1,5 @@
 from audioop import cross
+from calendar import c
 import json
 
 from flask import Blueprint, send_from_directory
@@ -20,10 +21,9 @@ views = Blueprint('views', __name__)
 @jwt_required()
 def add_note():
     current_user = get_jwt_identity()
-    current_user_id = User.query.filter_by(current_user)
-    print(current_user_id)
     print("Current user is " + current_user)
-    print(current_user.id)
+    current_user_id = User.query.filter_by(username=current_user).first()
+    print(current_user_id)
     if request.method == "POST":
         data = request.get_json()
         note = data['note']
@@ -52,7 +52,7 @@ def all_notes():
 def personal_notes():
     current_user = get_jwt_identity()
     if request.method == "GET":
-        notes = Note.query.filter_by(user_id=current_user).all()
+        notes = Note.query.filter_by(username=current_user).all()
         return jsonify(notes)
 
 
