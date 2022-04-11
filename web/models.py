@@ -1,7 +1,8 @@
+from email import charset
 import string
 from xmlrpc.client import Boolean, boolean
 from flask_login import UserMixin, current_user
-from sqlalchemy import VARCHAR
+from sqlalchemy import CHAR, VARCHAR
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
@@ -13,7 +14,7 @@ db = SQLAlchemy()
 class Note(db.Model):
     id: int
     data: string
-    owner = VARCHAR
+    owner = charset
     can_view_records: bool
     #user_id: int
 
