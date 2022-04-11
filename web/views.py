@@ -8,7 +8,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
 
-from .models import Note, db
+from .models import Note, User, db
 
 views = Blueprint('views', __name__)
 
@@ -20,6 +20,8 @@ views = Blueprint('views', __name__)
 @jwt_required()
 def add_note():
     current_user = get_jwt_identity()
+    current_user_id = User.query.filter_by(current_user)
+    print(current_user_id)
     print("Current user is " + current_user)
     print(current_user.id)
     if request.method == "POST":
