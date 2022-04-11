@@ -14,16 +14,13 @@ from .models import Note, User, db
 views = Blueprint('views', __name__)
 
 
-
-
-
 @views.route('/api/addnote', methods=['GET', 'POST'])
 @jwt_required()
 def add_note():
     current_user = get_jwt_identity()
     #print("Current user is " + current_user)
     user = User.query.filter_by(username=current_user).first()
-    #print(user.id)
+    # print(user.id)
     if request.method == "POST":
         data = request.get_json()
         note = data['note']
@@ -40,13 +37,13 @@ def add_note():
 
 
 @views.route('/api/notesfeed', methods=['GET', 'POST'])
-#@jwt_required()
+# @jwt_required()
 def all_notes():
     if request.method == "GET":
         #notes = Note.query.order_by(Note.date)
         notes = Note.query.all()
-        #print(Note.query.all())
-        #print(notes)
+        # print(Note.query.all())
+        print(notes)
         return jsonify(notes)
 
 
