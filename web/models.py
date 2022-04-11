@@ -13,7 +13,8 @@ class Note(db.Model):
     id: int
     data: string
     can_view_records: bool
-    user_id: int
+    #user_id: int
+    owner = string
 
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
