@@ -1,6 +1,6 @@
 import string
 from xmlrpc.client import Boolean, boolean
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
@@ -13,12 +13,13 @@ class Note(db.Model):
     id: int
     data: string
     can_view_records: bool
-    user_id: string
+    user_id: int
 
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     can_view_records = db.Column(db.Boolean, default=False)
+    owner = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

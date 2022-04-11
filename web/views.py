@@ -29,7 +29,7 @@ def add_note():
             return jsonify(error="note too short")
         else:
             new_note = Note(
-                data=note, can_view_records=can_view_records, user_id=current_user)
+                data=note, can_view_records=can_view_records, owner=current_user)
             db.session.add(new_note)
             db.session.commit()
             print("Note added!")
