@@ -22,7 +22,8 @@ views = Blueprint('views', __name__)
 def add_note():
     current_user = get_jwt_identity()
     print("Current user is " + current_user)
-    print(User.query.filter_by(username=current_user).first())
+    user = User.query.filter_by(username=current_user).first()
+    print(user.id)
     if request.method == "POST":
         data = request.get_json()
         note = data['note']
