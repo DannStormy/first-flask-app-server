@@ -14,7 +14,7 @@ db = SQLAlchemy()
 class Note(db.Model):
     id: int
     data: string
-    owner = string
+    owner: string
     can_view_records: bool
     #user_id: int
 
