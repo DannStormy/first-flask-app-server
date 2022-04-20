@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, request, flash
 from flask_login import current_user
 from flask_jwt_extended import create_access_token
-#from flask_cors import CORS, cross_origin
+# from flask_cors import CORS, cross_origin
 
-#from flask_login import login_user, login_required, logout_user, current_user
+# from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import true
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -24,25 +24,25 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 access_token = create_access_token(identity=username)
-                print(user)
                 print('Logged in Successfully')
-                return jsonify(access_token=access_token, username=username)
+                return jsonify(access_token=access_token, username=username, msg="Login Successful")
             else:
                 print('Incorrect password')
+                return{'msg': 'Incorrect password'}
         else:
             print('User does not exist')
             print(user)
-            return 'User does not exist', 201
+            return {'msg': 'User does not exist'}
     return "<p>This is the login page</p>"
 
 
-@auth.route('/api/logout')
+@ auth.route('/api/logout')
 def logout():
     # logout_user()
     return "<p>This is the logout page</p>"
 
 
-@auth.route('/api/sign-up', methods=['GET', 'POST'])
+@ auth.route('/api/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
         # get json data from post request
@@ -58,13 +58,12 @@ def sign_up():
         print(data)
         if user:
             print('Email exists, please login if you already have an account')
-            return "Email exists", 500
+            return {"msg": "Email exists, please login if you already have an account"}
         elif oldUser:
             print("Username already exists")
-            return "Username exists", 500
+            return {"msg": "Username already exists"}
         # store new_user with data
         else:
-            print("I got here")
             print(username)
             new_user = User(email=email, firstName=firstName,
                             lastName=lastName, username=username,
@@ -72,6 +71,5 @@ def sign_up():
         # add user
             db.session.add(new_user)
             db.session.commit()
-            print("New User")
-            return {"Signed-up": True}
+            return {"msg": "Registered Successfully"}
     return "<p>This is the sign-up page</p>"

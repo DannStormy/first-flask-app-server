@@ -1,8 +1,5 @@
-from email import charset
 import string
-from xmlrpc.client import Boolean, boolean
-from flask_login import UserMixin, current_user
-from sqlalchemy import CHAR, VARCHAR
+from flask_login import UserMixin
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass

@@ -31,7 +31,7 @@ def add_note():
             db.session.add(new_note)
             db.session.commit()
             print("Note added!")
-        return 'Done', 201
+            return jsonify(msg="Note added!")
 
 
 @views.route('/api/notesfeed', methods=['GET', 'POST'])
