@@ -24,7 +24,7 @@ def create_app():
     CORS(app)
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
-    # f'sqlite:///{DB_NAME}'
+    # f'sqlite:///database.db'
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
     # print(os.getenv('DATABASE_URL'))
