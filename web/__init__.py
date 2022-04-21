@@ -1,6 +1,7 @@
 import os
 from os import path
 
+
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -25,8 +26,7 @@ def create_app():
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
     # f'sqlite:///database.db'
-    # SQLALCHEMY_DATABASE_URI
-    app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv['SQLALCHEMY_DATABASE_URI']
 
     # print(os.getenv('DATABASE_URL'))
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
