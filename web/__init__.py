@@ -25,7 +25,8 @@ def create_app():
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
     # f'sqlite:///database.db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ixzcztnyllnnbl:e9cbb9e2b80a90bb1cb13370dd183a4ff17bac28fc66a0ced22e042e0fe88fc3@ec2-34-197-84-74.compute-1.amazonaws.com:5432/dbaqbn4bumsdbl'
+    # SQLALCHEMY_DATABASE_URI
+    app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 
     # print(os.getenv('DATABASE_URL'))
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
