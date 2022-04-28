@@ -14,7 +14,7 @@ from .views import views
 from .auth import auth
 
 
-from .models import db, User
+from .models import db
 
 DB_NAME = "database.db"
 
@@ -26,10 +26,10 @@ def create_app():
     app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET')
     jwt = JWTManager(app)
     # f'sqlite:///database.db'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('LOCAL_DATABASE_URL')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
         'SQLALCHEMY_DATABASE_URI')
 
-    # print(os.getenv('DATABASE_URL'))
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     app.register_blueprint(views, url_prefix='/')

@@ -56,6 +56,7 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         oldUser = User.query.filter_by(username=username).first()
         print(data)
+        access_token = create_access_token(identity=username)
         if user:
             print('Email exists, please login if you already have an account')
             return {"msg": "Email exists, please login if you already have an account"}
@@ -71,5 +72,5 @@ def sign_up():
         # add user
             db.session.add(new_user)
             db.session.commit()
-            return {"msg": "Registered Successfully"}
+            return jsonify(access_token=access_token, username=username, msg="Registered Successfully")
     return "<p>This is the sign-up page</p>"
